@@ -1,23 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { getByCategories } from '../Service/requestApi';
+import { getByCategories, getByProducts } from '../Service/requestApi';
 import AppContext from './AppContext';
 
 function AppProvider({ children }) {
   const [reloadPage ,setReloadPage] = useState(false);
-  const [categoryList ,setCategoryList] = useState(false);
+  const [categoryList ,setCategoryList] = useState([]);
+  const [productsList, setProductsList] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('Acessórios para Veículos');
 
-  const getTeamList = async () => {
+  const getCategory = async () => {
     await getByCategories().then((response) =>
       setCategoryList(response)
     );
   };
 
-  useEffect(() => {
-    setReloadPage(false);
-  }, [reloadPage]);
+  const getProducts = async (category) => {
+    await getByProducts(category).then((response) =>
+      setProductsList(response.results)
+    );
+  };
 
   useEffect(() => {
-    getTeamList();
+    setReloadPage(false);
+    getProducts(selectedCategory);
+  }, [reloadPage, selectedCategory]);
+
+  useEffect(() => {
+    getCategory();
   }, []);
 
   return (
@@ -26,7 +35,11 @@ function AppProvider({ children }) {
         reloadPage,
         setReloadPage,
         categoryList,
-        setCategoryList
+        setCategoryList,
+        productsList,
+        setProductsList,
+        selectedCategory,
+        setSelectedCategory
       } }
     >
       { children }

@@ -1,0 +1,15 @@
+.containerCard {
+    display: flex;
+}
+
+.containerCard .sectionTitle {
+    flex:1;
+}
+
+.containerCard .sectionDetails {
+    flex:3;
+}
+
+.containerCard .sectionFavorite {
+    flex:1;
+}
