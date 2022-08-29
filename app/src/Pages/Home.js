@@ -1,9 +1,16 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
+
+import CategoryList from '../Components/CategoryList';
 
 function Home() {
-    return (
-        <h1>Home</h1>
-    )
+  return (
+    <Container>
+      <h1>Home</h1>
+      <CategoryList />
+    </Container>
+        
+  )
 }
 
 export default Home;
