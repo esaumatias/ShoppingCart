@@ -9,19 +9,20 @@ import "../Style/Home.css";
 
 function Home() {
   return (
-    <Container>
+    <>
       <Header />
+      <Container>
         <Row xs={1} md={2} className="g-4">
-          <Col>
+          <Col style={{ width: "30%"}}>
             <CategoryList />
           </Col>
 
-          <Col>
+          <Col style={{ width: "70%", diplay: "flex", alignItems: "center" }}>
             <CardProducts />
           </Col>
         </Row>
-    </Container>
-        
+      </Container>
+    </>
   )
 }
 
