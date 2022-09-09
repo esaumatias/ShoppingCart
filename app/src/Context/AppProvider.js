@@ -22,12 +22,12 @@ function AppProvider({ children }) {
 
   useEffect(() => {
     setReloadPage(false);
-    getProducts(selectedCategory);
   }, [reloadPage, selectedCategory]);
 
   useEffect(() => {
     getCategory();
-  }, []);
+    getProducts(selectedCategory);
+  }, [selectedCategory]);
 
   return (
     <AppContext.Provider

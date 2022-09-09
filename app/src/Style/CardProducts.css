@@ -13,3 +13,9 @@
 .containerCard .sectionFavorite {
     flex:1;
 }
+
+.containerSpinner {
+    position: fixed;
+    left: 60%;
+    bottom: 50%;
+}

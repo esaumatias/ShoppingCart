@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import AppContext from '../Context/AppContext';
-import { Card, Col, Row } from 'react-bootstrap';
+import { Card, Col, Row, Spinner } from 'react-bootstrap';
 import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
@@ -35,13 +35,15 @@ function CardProducts() {
                     <p>{product.title}</p>
                     <Card.Text>
                       <h3>{`R$ ${product.price}`}</h3>
-                      <Typography variant="subtitle1" color="text.secondary" component="div">
+                      {product.installments !== null ? (
+                        <Typography variant="subtitle1" color="text.secondary" component="div">
                         <strong>{`em ${product.installments.quantity}x de R$ ${
                           product.installments.amount
                         } ${
                           product.installments.rate === 0 ? "sem juros" : ""
                         }`}</strong>
                       </Typography>
+                      ) : null }
                     </Card.Text>
                   </Card.Body>
                   <Button variant="contained" color="success">
@@ -54,7 +56,11 @@ function CardProducts() {
               </section>
             </Col>
           ))
-        : null}
+        : (
+          <Spinner animation="border" role="status" className="containerSpinner">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+        )}
     </Row>
   );
 }

@@ -1,17 +1,23 @@
 import React, { useContext } from 'react';
 import AppContext from '../Context/AppContext';
 import { Nav, Container} from 'react-bootstrap';
+import { getByProducts } from '../Service/requestApi';
 
 function CategoryList() {
-    const { categoryList } = useContext(AppContext);
-    console.log(categoryList);
+  const { categoryList, setProductsList } = useContext(AppContext);
+
+  const getProducts = async (category) => {
+    setProductsList(false);
+    await getByProducts(category).then((response) =>
+      setProductsList(response.results)
+    );
+  };
     return (
       <Container>
         <Nav defaultActiveKey="/" className="flex-column">
-          <Nav.Link eventKey="link-1">Todos</Nav.Link>
           {categoryList ? (
             categoryList.map((category, key) => (
-              <Nav.Link key={ key } eventKey={`link-${ key + 1 }`}>{ category.name }</Nav.Link>
+              <Nav.Link key={ key } eventKey={`link-${ key + 1 }`} onClick={() => getProducts(category.name)}>{ category.name }</Nav.Link>
             ))
           ): null}
         </Nav>
