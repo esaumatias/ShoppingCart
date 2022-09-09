@@ -14,8 +14,16 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 
 function CardProducts() {
-    const { productsList } = useContext(AppContext);
-    console.log(productsList);
+    const { productsList, setItemsCart, itemsCart, setReloadPage } = useContext(AppContext);
+    
+    const addItensCart = (item) => {
+      const { thumbnail, title, price } = item;
+      const product = { thumbnail, title, price };
+      setItemsCart([...itemsCart, product]);
+      setReloadPage(true);
+    }
+
+    console.log(itemsCart);
   return (
     <Row xs={1} md={1} className="g-4">
       {productsList
@@ -46,7 +54,7 @@ function CardProducts() {
                       ) : null }
                     </Card.Text>
                   </Card.Body>
-                  <Button variant="contained" color="success">
+                  <Button variant="contained" color="success" onClick={() => addItensCart(product)}>
                     Adicionar
                   </Button>
                 </div>
