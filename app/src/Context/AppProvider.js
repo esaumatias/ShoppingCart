@@ -23,6 +23,13 @@ function AppProvider({ children }) {
   };
 
   useEffect(() => {
+    const storedFavorites = localStorage.getItem("favorites");
+    const storedItensCart = localStorage.getItem("itensCart");
+    storedFavorites ? setIsChecked(JSON.parse(storedFavorites)) : setIsChecked(['']);
+    storedItensCart ? setItemsCart(JSON.parse(storedItensCart)) : setItemsCart(['']);
+   }, [])
+
+  useEffect(() => {
     setReloadPage(false);
   }, [reloadPage, selectedCategory]);
 

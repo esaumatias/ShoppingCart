@@ -20,6 +20,7 @@ function CardProducts() {
       const { thumbnail, title, price } = item;
       const product = { thumbnail, title, price };
       setItemsCart([...itemsCart, product]);
+      localStorage.setItem("itensCart",JSON.stringify([...itemsCart, product]));
       setReloadPage(true);
     }
 
@@ -30,10 +31,10 @@ function CardProducts() {
       if (checkEquality) {
         const newList = isChecked.filter((value) => (value.title !== title));
         setIsChecked(newList)
-        localStorage.setItem("articles",JSON.stringify(newList));
+        localStorage.setItem("favorites",JSON.stringify(newList));
       } else if (!checkEquality)  {
         setIsChecked([...isChecked, product]);
-        localStorage.setItem("articles",JSON.stringify([...isChecked, product]));
+        localStorage.setItem("favorites",JSON.stringify([...isChecked, product]));
       }
       setReloadPage(true);
     }

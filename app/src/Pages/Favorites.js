@@ -4,7 +4,6 @@ import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
 import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import AppContext from '../Context/AppContext';
 import Header from '../Components/Header';
@@ -16,14 +15,15 @@ function Favorites() {
     const { thumbnail, title, price } = item;
     const product = { thumbnail, title, price };
     setItemsCart([...itemsCart, product]);
+    localStorage.setItem("itensCart",JSON.stringify([...itemsCart, product]));
     setReloadPage(true);
   }
 
-  function removeFavorite(article) {
-    const { title } = article;
+  function removeFavorite(product) {
+    const { title } = product;
     const newList = isChecked.filter((value) => (value.title !== title));
     setIsChecked(newList)
-    localStorage.setItem("products",JSON.stringify(newList));
+    localStorage.setItem("favorites",JSON.stringify(newList));
     setReloadPage(true);
   }
 
@@ -49,15 +49,6 @@ function Favorites() {
                         <p>{product.title}</p>
                         <Card.Text>
                         <h3>{`R$ ${product.price}`}</h3>
-                        {product.installments !== null ? (
-                            <Typography variant="subtitle1" color="text.secondary" component="div">
-                            <strong>{`em ${product.installments.quantity}x de R$ ${
-                            product.installments.amount
-                            } ${
-                            product.installments.rate === 0 ? "sem juros" : ""
-                            }`}</strong>
-                        </Typography>
-                        ) : null }
                         </Card.Text>
                     </Card.Body>
                     <Button variant="contained" color="success" onClick={() => addItensCart(product)}>

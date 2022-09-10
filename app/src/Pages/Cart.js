@@ -21,10 +21,12 @@ function Cart() {
       const index = itemsCart.findIndex((item) => item.title === product);
       itenCart.splice(index, 1);
       setItemsCart(itenCart);
+      localStorage.setItem("itensCart",JSON.stringify(itenCart));
     }
 
     const addItem = (product) => {
       setItemsCart([...itemsCart, product]);
+      localStorage.setItem("itensCart",JSON.stringify([...itemsCart, product]));
     }
 
 
