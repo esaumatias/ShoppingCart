@@ -13,6 +13,7 @@ function Header() {
         <Navbar.Brand href="#home">SHOPPING CART</Navbar.Brand>
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
+            <Link to="/">Home</Link>
             <Nav.Link href="#deets">Favoritos</Nav.Link>
           </Nav>
           <Nav>
