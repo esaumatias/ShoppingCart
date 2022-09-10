@@ -14,7 +14,7 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 
 function CardProducts() {
-    const { productsList, setItemsCart, itemsCart, setReloadPage } = useContext(AppContext);
+    const { productsList, setItemsCart, itemsCart, setReloadPage, isChecked, setIsChecked } = useContext(AppContext);
     
     const addItensCart = (item) => {
       const { thumbnail, title, price } = item;
@@ -23,7 +23,23 @@ function CardProducts() {
       setReloadPage(true);
     }
 
-    console.log(itemsCart);
+    function setIfIsFavorite(product) {
+      const {  title } = product;
+      const checkEquality = isChecked.some((value) => value.title === title);
+      
+      if (checkEquality) {
+        const newList = isChecked.filter((value) => (value.title !== title));
+        setIsChecked(newList)
+        localStorage.setItem("articles",JSON.stringify(newList));
+      } else if (!checkEquality)  {
+        setIsChecked([...isChecked, product]);
+        localStorage.setItem("articles",JSON.stringify([...isChecked, product]));
+      }
+      setReloadPage(true);
+    }
+  
+    const checkIfIsFavorite = (title) => (isChecked.some((values) => values.title === title));
+
   return (
     <Row xs={1} md={1} className="g-4">
       {productsList
@@ -59,7 +75,12 @@ function CardProducts() {
                   </Button>
                 </div>
                 <div className="sectionFavorite">
-                  <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
+                  <Checkbox
+                      icon={<FavoriteBorder />}
+                      checkedIcon={<Favorite />}
+                      onChange={() => setIfIsFavorite(product)}
+                      checked={ checkIfIsFavorite(product.title) }
+                    />
                 </div>
               </section>
             </Col>
