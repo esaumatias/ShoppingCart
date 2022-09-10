@@ -7,6 +7,7 @@ function AppProvider({ children }) {
   const [categoryList ,setCategoryList] = useState([]);
   const [productsList, setProductsList] = useState([]);
   const [itemsCart, setItemsCart] = useState([]);
+  const [isChecked, setIsChecked] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('Acessórios para Veículos');
 
   const getCategory = async () => {
@@ -42,7 +43,9 @@ function AppProvider({ children }) {
         selectedCategory,
         setSelectedCategory,
         itemsCart,
-        setItemsCart
+        setItemsCart,
+        isChecked,
+        setIsChecked
       } }
     >
       { children }

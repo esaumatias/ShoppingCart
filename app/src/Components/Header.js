@@ -28,6 +28,7 @@ function Header() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Link to="/">Home</Link>
+            <Link to="/favorites">Favoritos</Link>
             <Nav.Link href="#deets">Favoritos</Nav.Link>
           </Nav>
           <Nav>
