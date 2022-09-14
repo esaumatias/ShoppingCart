@@ -8,6 +8,8 @@ import Button from '@mui/material/Button';
 import AppContext from '../Context/AppContext';
 import Header from '../Components/Header';
 
+import '../Style/Favorites.css';
+
 function Favorites() {
   const { isChecked, setIsChecked, setReloadPage, setItemsCart, itemsCart } = useContext(AppContext);
 
@@ -30,18 +32,21 @@ function Favorites() {
   return (
     <>
     <Header />
+    <div className='containerFavoriteAll'>
+      <h1>FAVORITOS</h1>
       <Container>
         <Row xs={1} md={1} className="g-4">
         {isChecked
             ? isChecked.map((product, idx) => (
                 <Col key={idx}>
-                <section className="containerCard">
+                <section className="containerCardFavorite">
                     <div className="sectionTitle">
                     <CardMedia
                         component="img"
                         sx={{ width: 151 }}
                         image={ product.thumbnail }
                         alt="Live from space album cover"
+                        style={{ borderRadius: "20PX" }}
                     />
                     </div>
                     <div className="sectionDetails">
@@ -66,8 +71,9 @@ function Favorites() {
                 <span className="visually-hidden">Loading...</span>
             </Spinner>
             )}
-        </Row>
-      </Container>
+          </Row>
+        </Container>
+      </div>
     </>
   );
 }

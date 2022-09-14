@@ -4,10 +4,15 @@ import { Container, ListGroup, Figure } from 'react-bootstrap';
 import Icon from '@mui/material/Icon';
 import { green, red } from '@mui/material/colors';
 import Header from '../Components/Header';
+import "../Style/Cart.css";
 
 function Cart() {
     const { itemsCart, setItemsCart } = useContext(AppContext);
     const [removedRepeatItems, setRemovedRepeatItems] = useState([]);
+
+    const totalProduct = (value) => {
+      return itemsCart.filter((values) => values.title === value.title).length;
+    }
 
     useEffect(() => {
       const uniqueArray = itemsCart.filter(function (a) {
@@ -33,30 +38,37 @@ function Cart() {
   return (
     <>
       <Header />
-      <Container>
-        <ListGroup variant="flush">
-          {removedRepeatItems ? (
-            removedRepeatItems.map((value, index) => (
-              <ListGroup.Item key={ index }>
-                <Figure>
-                  <Figure.Image
-                    width={50}
-                    height={50}
-                    alt="50x50"
-                    src={ value.thumbnail }
-                  />
-                </Figure>
-                <strong>{ value.title }</strong>
-                <div>
-                  <button onClick={() => removeItem(value.title)}><Icon sx={{ color: red[500] }}>remove_circle</Icon></button>
-                    {itemsCart.filter((values) => values.title === value.title).length}
-                  <button onClick={() => addItem(value)}><Icon sx={{ color: green[500] }}>add_circle</Icon></button>                                 
-                </div>
-              </ListGroup.Item>
-            ))
-          ) : null }
-        </ListGroup>
+      <div  className='conatinerPageAll'>
+        <h1>CARRINHO DE COMPRAS</h1>
+        <Container>
+          <ListGroup variant="flush">
+            {removedRepeatItems ? (
+              removedRepeatItems.map((value, index) => (
+                <ListGroup.Item key={ index }>
+                  <div className='containerCart'>
+                    <div>
+                      <Figure>
+                        <Figure.Image
+                          width={50}
+                          height={50}
+                          alt="50x50"
+                          src={ value.thumbnail }
+                        />
+                      </Figure>
+                      <strong>{ value.title }</strong>
+                    </div>
+                    <div className='containerButtons'>
+                      <button onClick={() => removeItem(value.title)}><Icon sx={{ color: red[500] }}>remove_circle</Icon></button>
+                        <div>{totalProduct(value)}</div>
+                      <button onClick={() => addItem(value)}><Icon sx={{ color: green[500] }}>add_circle</Icon></button>                                 
+                    </div>
+                  </div>
+                </ListGroup.Item>
+              ))
+            ) : null }
+          </ListGroup>
       </Container>
+      </div>
     </>
   )
 }

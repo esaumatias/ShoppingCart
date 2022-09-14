@@ -1,0 +1,25 @@
+.conatinerPageAll {
+  background-color: rgb(211, 208, 208);
+  min-height: 100vh;
+}
+
+.containerCart {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+}
+
+.containerButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  text-align: center;
+}
