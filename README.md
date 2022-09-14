@@ -2,7 +2,7 @@
 
 Foi desenvolvido um pagina de venda de produtos, nela é possivel pesquisar por categorias, salvar produtos na pagina de favoritos e adicionar no carrinho de pedidos. Ambas as paginas os produtos estão disponiveis mesmo que a janela do navegador seja fechada e aberta novamente.
 
-## DEPLOY DA APLICAÇÃO: [https://search-article.vercel.app/](https://shopping-cart-nine-sage.vercel.app/)
+## DEPLOY DA APLICAÇÃO: https://shopping-cart-nine-sage.vercel.app/
 
 ## Como executar o aplicativo:
 
