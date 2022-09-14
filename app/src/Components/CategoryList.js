@@ -15,14 +15,22 @@ function CategoryList() {
     return (
       <Container>
         <Nav defaultActiveKey="/" className="flex-column">
-          {categoryList ? (
-            categoryList.map((category, key) => (
-              <Nav.Link key={ key } eventKey={`link-${ key + 1 }`} onClick={() => getProducts(category.name)}>{ category.name }</Nav.Link>
-            ))
-          ): null}
+          {categoryList
+            ? categoryList.map((category, key) => (
+                <Nav.Link
+                  key={key}
+                  eventKey={`link-${key + 1}`}
+                  onClick={() => getProducts(category.name)}
+                  className="categoryList"
+                  style={{ color: "black"}}
+                >
+                  {category.name}
+                </Nav.Link>
+              ))
+            : null}
         </Nav>
       </Container>
-    )
+    );
 }
 
 export default CategoryList;

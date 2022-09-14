@@ -11,17 +11,19 @@ function Home() {
   return (
     <>
       <Header />
-      <Container>
-        <Row xs={1} md={2} className="g-4">
-          <Col style={{ width: "30%"}}>
-            <CategoryList />
-          </Col>
+      <div className='containerAll'>
+        <Container>
+          <Row xs={1} md={2} className="g-4">
+            <Col style={{ width: "30%"}}>
+              <CategoryList />
+            </Col>
 
-          <Col style={{ width: "70%", diplay: "flex", alignItems: "center" }}>
-            <CardProducts />
-          </Col>
-        </Row>
-      </Container>
+            <Col style={{ width: "70%", diplay: "flex", alignItems: "center" }}>
+              <CardProducts />
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </>
   )
 }

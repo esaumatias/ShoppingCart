@@ -8,10 +8,7 @@ import Favorite from '@mui/icons-material/Favorite';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 
-import '../Style/CardProducts.css'
-
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-
+import '../Style/CardProducts.css';
 
 function CardProducts() {
     const { productsList, setItemsCart, itemsCart, setReloadPage, isChecked, setIsChecked } = useContext(AppContext);
@@ -53,6 +50,7 @@ function CardProducts() {
                     sx={{ width: 151 }}
                     image={ product.thumbnail }
                     alt="Live from space album cover"
+                    style={{ borderRadius: "20PX" }}
                   />
                 </div>
                 <div className="sectionDetails">

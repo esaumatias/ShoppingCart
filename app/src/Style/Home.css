@@ -3,3 +3,8 @@
   align-items: flex-start;
   justify-content: space-between;
 }
+
+.containerAll {
+  margin-top: 20px;
+  background-color: rgb(211, 208, 208);
+}

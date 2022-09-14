@@ -7,7 +7,6 @@ import IconButton from '@mui/material/IconButton';
 import Badge from '@mui/material/Badge';
 import { lightGreen } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
-import { Link } from 'react-router-dom';
 
 function Header() {
   const { itemsCart } = useContext(AppContext);
@@ -27,21 +26,20 @@ function Header() {
         <Navbar.Brand href="#home">SHOPPING CART</Navbar.Brand>
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Link to="/">Home</Link>
-            <Link to="/favorites">Favoritos</Link>
-            <Nav.Link href="#deets">Favoritos</Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/favorites">Favoritos</Nav.Link>
           </Nav>
           <Nav>
           </Nav>
         </Navbar.Collapse>
         <ListItemIcon>
-          <Link to="/cart">
+          <Nav.Link href="/cart">
             <IconButton aria-label="cart">
               <StyledBadge badgeContent={ itemsCart.length } color="primary">
                 <ShoppingCartIcon sx={{ color: lightGreen[500] }}/>
               </StyledBadge>
             </IconButton>
-          </Link>
+          </Nav.Link>
         </ListItemIcon>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       </Container>
